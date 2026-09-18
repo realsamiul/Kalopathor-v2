@@ -11,8 +11,10 @@
     "polygon_count": 1199,
     "total_affected": 20491387,
     "next_pass_est": "2024-08-18",
-    "source": "detection_polygons_v4.geojson (d3v4.1)",
+    "source": "detection_polygons_v4.geojson (d3v4.2, τ=0.5)",
     "model_version": "d3v4.2",
-    "threshold": 0.5
+    "threshold": 0.5,
+    "total_area_km2": 21954,
+    "gauge_count": 115
   }
 }

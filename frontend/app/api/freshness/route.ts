@@ -12,13 +12,13 @@ import type {
 // Source-of-truth files (ML/data tracks). The ops console runs on the same
 // host as these pipelines; staleness is decided HERE, server-side, from real
 // file metadata + contents. Never fake a timestamp for a missing source.
-const WORK = '/root/General/kalopathor/work';
+const WORK = '/home/ubuntu/General/kalopathor/work';
 const FFWC_PARQUET = `${WORK}/geophysics/ffwc_water_levels.parquet`;
 const SAR_GEOJSON = `${WORK}/detection_polygons_v4.geojson`;
 const GLOFAS_NC = `${WORK}/prediction/glofas_v5_bahadurabad.nc`;
 const OPENMETEO_PARQUET = `${WORK}/prediction/openmeteo_flood.parquet`;
 const SHELTER_GEOJSON = `${WORK}/eve/shelters/shelter_proxy.geojson`;
-const MODEL_REPORT = `${WORK}/checkpoints/d3v4.1_report.json`;
+const MODEL_REPORT = `${WORK}/checkpoints/d3v4.2_report.json`;
 
 // Server-side staleness policy (seconds since the seed was written).
 const FFWC_STALE_AFTER_S = 3600; // contract-mandated: FFWC hourly scrape
@@ -132,10 +132,10 @@ async function shelters(nowMs: number): Promise<SheltersLayer> {
 async function modelLayer(): Promise<ModelLayer> {
   try {
     await stat(MODEL_REPORT);
-    return {basis: 'static', version: 'd3v4.1', frozen: true};
+    return {basis: 'static', version: 'd3v4.2', frozen: true};
   } catch {
     // Deployed artifact is fixed in the bundle; checkpoint missing => unverifiable.
-    return {basis: 'static', version: 'd3v4.1', frozen: true};
+    return {basis: 'static', version: 'd3v4.2', frozen: true};
   }
 }
 
