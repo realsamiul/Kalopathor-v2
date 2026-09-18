@@ -1,6 +1,5 @@
 node_modules/
 .next/
 *.npy
-*.pmtiles
 *.parquet.bak
 .DS_Store
